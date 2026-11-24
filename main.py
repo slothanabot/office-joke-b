@@ -11,6 +11,10 @@ import os
 
 LINE = "The office printer is the only honest coworker here \u2014 it says it is out of paper, and it actually is."
 
+# The gate only accepts 1-200 characters: refuse to write anything outside it.
+assert 1 <= len(LINE) <= 200, "joke must be 1-200 characters"
+assert "\n" not in LINE, "joke must be a single line"
+
 
 def main() -> None:
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
